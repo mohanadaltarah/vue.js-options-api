@@ -6,7 +6,7 @@
   </div>
   <button @click="DeleteFirst">Change Ref</button>
   <p>active is {{ isActive }}</p>
-  <button @click="changeActive">Change Prem</button>
+  <button @click="$emit('updateActive')">Change Prem</button>
 </template>
 
 <script>
@@ -21,6 +21,7 @@ export default {
       required: true,
     },
   },
+  emits: ["updateActive"],
   data() {
     return {
       myStudents: this.st,
@@ -29,9 +30,6 @@ export default {
   methods: {
     DeleteFirst() {
       this.myStudents.shift();
-    },
-    changeActive() {
-      this.$emit("updateActive");
     },
   },
 };

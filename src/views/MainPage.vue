@@ -4,17 +4,20 @@
     <h2>This is my main page</h2>
     <Content :st="students" @updateActive="changeActive" :isActive="isActive" />
     <hr />
-    <Content :st="students" :isActive="isActive" />
+    <Content :st="students" @updateActive="changeActive" :isActive="isActive" />
+    <LifeComp />
   </div>
 </template>
 
 <script>
 import Content from "@/components/ContentComp.vue";
+import LifeComp from "@/components/LifeHooks.vue";
 
 export default {
   name: "MainPage",
   components: {
     Content,
+    LifeComp,
   },
   data() {
     return {
