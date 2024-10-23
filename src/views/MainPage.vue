@@ -1,18 +1,33 @@
 <template>
   <div class="main-page">
     <my-nav></my-nav>
-    <h1>This is my main page</h1>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid,
-      debitis, nesciunt! Blanditiis cupiditate debitis eveniet facere molestias
-      mollitia quia quisquam soluta sunt ut? Distinctio dolorum eum facere nam
-      odio vero!
-    </p>
+    <h2>This is my main page</h2>
+    <Content :st="students" />
   </div>
 </template>
 
 <script>
+import Content from "@/components/ContentComp.vue";
+
 export default {
   name: "MainPage",
+  components: {
+    Content,
+  },
+  data() {
+    return {
+      students: ["Ahmed", "Mohanad", "Khalid"],
+    };
+  },
 };
 </script>
+<style scoped lang="scss">
+.main-page {
+  h2 {
+    color: #2c3e50;
+  }
+  p {
+    color: green;
+  }
+}
+</style>
