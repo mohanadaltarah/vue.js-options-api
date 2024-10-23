@@ -2,7 +2,7 @@
   <div class="main-page">
     <my-nav></my-nav>
     <h2>This is my main page</h2>
-    <Content :st="students" :isActive="isActive" />
+    <Content :st="students" @updateActive="changeActive" :isActive="isActive" />
     <hr />
     <Content :st="students" :isActive="isActive" />
   </div>
@@ -21,6 +21,11 @@ export default {
       isActive: true,
       students: ["Ahmed", "Mohanad", "Khalid"],
     };
+  },
+  methods: {
+    changeActive() {
+      this.isActive = !this.isActive;
+    },
   },
 };
 </script>
