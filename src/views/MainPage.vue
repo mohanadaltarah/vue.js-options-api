@@ -2,7 +2,9 @@
   <div class="main-page">
     <my-nav></my-nav>
     <h2>This is my main page</h2>
-    <Content :st="students" />
+    <Content :st="students" :isActive="isActive" />
+    <hr />
+    <Content :st="students" :isActive="isActive" />
   </div>
 </template>
 
@@ -16,6 +18,7 @@ export default {
   },
   data() {
     return {
+      isActive: true,
       students: ["Ahmed", "Mohanad", "Khalid"],
     };
   },

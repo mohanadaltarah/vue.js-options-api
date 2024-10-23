@@ -4,13 +4,33 @@
       <li v-for="(student, i) in st" :key="i">{{ student }}</li>
     </ul>
   </div>
+  <button @click="DeleteFirst">Change Ref</button>
+  <p>active is {{ myActive }}</p>
+  <button @click="myActive = !myActive">Change Prem</button>
 </template>
 
 <script>
 export default {
-  props: ["st"],
+  props: {
+    st: {
+      type: Array,
+      required: true,
+    },
+    isActive: {
+      type: Boolean,
+      required: true,
+    },
+  },
   data() {
-    return {};
+    return {
+      myStudents: this.st,
+      myActive: this.isActive,
+    };
+  },
+  methods: {
+    DeleteFirst() {
+      this.myStudents.shift();
+    },
   },
 };
 </script>
