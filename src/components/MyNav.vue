@@ -1,15 +1,16 @@
 <template>
   <nav class="my-nav">
-    <div class="icon">
-      <h2>icon</h2>
-    </div>
     <div class="logo">
-      {{ logo }}
+      <img src="@/assets/logo.png" alt="" />
     </div>
     <div class="links">
       <ul>
         <li v-for="link in links" :key="link">{{ link }}</li>
       </ul>
+    </div>
+    <div class="btns">
+      <button style="">Login</button>
+      <button>Sign Up</button>
     </div>
   </nav>
 </template>
@@ -19,7 +20,7 @@ export default {
   data() {
     return {
       logo: "My Logo",
-      links: ["link1", "link2"],
+      links: ["link1", "link2", "link3", "link4"],
     };
   },
 };
@@ -29,11 +30,29 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 100px;
+  background-color: #ff3300;
 }
 
 ul {
   display: flex;
+  justify-content: space-between;
   gap: 50px;
   list-style: none;
+}
+
+img {
+  width: 200px;
+}
+
+button {
+  background-color: #2c3e50;
+  color: white;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+li {
+  color: white;
 }
 </style>
