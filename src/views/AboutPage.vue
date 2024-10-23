@@ -5,15 +5,11 @@
   </div>
 </template>
 <script>
-import Content from "@/components/ContentComp.vue";
 export default {
   data() {
     return {
       students: ["Ahmed", "Sarah", "Muoaz", "Ibrahim"],
     };
-  },
-  components: {
-    Content,
   },
 };
 </script>
