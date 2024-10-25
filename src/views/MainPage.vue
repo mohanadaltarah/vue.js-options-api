@@ -48,24 +48,33 @@
         <input style="width: 50%; margin: auto" type="submit" value="Add" />
       </div>
       <div>
-        <ul>
-          <li v-for="st in students" :key="st.id">
-            <p>Name: {{ st.name }}</p>
-            <p>Age: {{ st.age }}</p>
-            <p>Gender: {{ st.gender }}</p>
-            <p>Grade: {{ st.grade }}</p>
-            <p>
-              Favorite sports:
-              <strong>
-                <span v-for="(sport, i) in st.favouritSports" :key="i">
-                  {{ sport }}<br />
-                </span>
-              </strong>
-            </p>
-          </li>
-        </ul>
+        <h3>Update Age</h3>
+        <label for="change-age">Age</label>
+        <input type="number" v-model="changeAge" />
+        <label for="change-id">Id</label>
+        <input type="number" v-model="changeId" />
+        <button type="button" @click="updateStudent">Update</button>
       </div>
     </form>
+    <div>
+      <ul>
+        <li v-for="st in students" :key="st.id">
+          <p>Id: {{ st.id }}</p>
+          <p>Name: {{ st.name }}</p>
+          <p>Age: {{ st.age }}</p>
+          <p>Gender: {{ st.gender }}</p>
+          <p>Grade: {{ st.grade }}</p>
+          <p>
+            Favorite sports:
+            <strong>
+              <span v-for="(sport, i) in st.favouritSports" :key="i">
+                {{ sport }}<br />
+              </span>
+            </strong>
+          </p>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -82,6 +91,8 @@ export default {
         favouritSports: [],
       },
       students: [],
+      changeAge: "",
+      changeId: "",
     };
   },
   methods: {
@@ -103,6 +114,22 @@ export default {
       await fetch("https://course-backend.onrender.com/add-student", requestData)
           .then(response => response.json())
           .then(data => this.students = data);
+    },
+    async updateStudent(){
+      if(!this.changeAge || !this.changeId){
+        return;
+      }
+      const requestData ={
+        headers: {"Content-Type": "application/json"},
+        method: "POST",
+        body: JSON.stringify({
+          age: this.changeAge,
+        })
+      }
+      await fetch(`https://course-backend.onrender.com/update-student/${this.changeId}`, requestData)
+          .then(response => response.json())
+          .then(data => this.students = data);
+
     }
   },
   async mounted() {
