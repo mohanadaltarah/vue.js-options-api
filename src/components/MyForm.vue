@@ -12,15 +12,6 @@
           />
         </div>
         <div>
-          <label for="lastName">Last Name</label>
-          <input
-            v-model="member.lastName"
-            type="text"
-            name="lastName"
-            id="lastName"
-          />
-        </div>
-        <div>
           <label for="age">Age</label>
           <input v-model="member.age" type="number" name="age" id="age" />
         </div>
