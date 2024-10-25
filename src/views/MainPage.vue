@@ -2,7 +2,7 @@
   <div class="main-page">
     <h2>This is my main page</h2>
     <p></p>
-    <form action="" @submit.prevent>
+    <form action="" @submit.prevent="addStudent">
       <div>
         <label for="name">Name</label>
         <input id="name" v-model="student.name" name="name" type="text" />
@@ -94,6 +94,16 @@ export default {
         .then(response => response.json())
         .then(data => this.students = data);
     },
+    async addStudent(){
+      const requestData ={
+        headers: {"Content-Type": "application/json"},
+        method: "POST",
+        body: JSON.stringify(this.student)
+      }
+      await fetch("https://course-backend.onrender.com/add-student", requestData)
+          .then(response => response.json())
+          .then(data => this.students = data);
+    }
   },
   async mounted() {
     await this.getStudents();
