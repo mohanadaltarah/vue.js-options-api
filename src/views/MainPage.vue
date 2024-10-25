@@ -42,7 +42,7 @@
       <div>
         <h3>Favorite Sports</h3>
         <input type="text" v-model="sport" />
-        <button @click="addSport">Add Sport</button>
+        <button type="button" @click="addSport">Add Sport</button>
       </div>
       <div class="actions" style="width: 100%">
         <input style="width: 50%; margin: auto" type="submit" value="Add" />
@@ -56,7 +56,7 @@
         <button type="button" @click="updateStudent">Update</button>
       </div>
     </form>
-    <div>
+    <div style="display: flex">
       <ul>
         <li v-for="st in students" :key="st.id">
           <p>Id: {{ st.id }}</p>
@@ -72,6 +72,12 @@
               </span>
             </strong>
           </p>
+          <span
+            @click="deleteStudent(st.id)"
+            style="cursor: pointer; font-size: 25px; color: red"
+          >
+            X
+          </span>
         </li>
       </ul>
     </div>
@@ -84,6 +90,7 @@ export default {
     return {
       sport: "",
       student: {
+        id: "",
         name: "",
         age: "",
         grade: "",
@@ -130,6 +137,26 @@ export default {
           .then(response => response.json())
           .then(data => this.students = data);
 
+    },
+    async deleteStudent(id) {
+      const requestData = {
+        headers: { "Content-Type": "application/json" },
+        method: "DELETE",
+      };
+
+      try {
+        const response = await fetch(`https://course-backend.onrender.com/delete-student/${id}`, requestData);
+
+        if (response.ok) {
+          // Remove the student with the given ID from the local array
+          this.students = this.students.filter(student => student.id !== id);
+          console.log(this.students);
+        } else {
+          console.error("Failed to delete student.");
+        }
+      } catch (error) {
+        console.error("An error occurred while deleting the student:", error);
+      }
     }
   },
   async mounted() {
