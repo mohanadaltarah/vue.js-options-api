@@ -1,31 +1,20 @@
 <template>
   <div class="main-page">
     <h2>This is my main page</h2>
-    <ul v-styleLinks="50">
-      <li>-</li>
-      <li>-</li>
-      <li>-</li>
-      <li>-</li>
-      <li>-</li>
+    <ul>
+      <li v-for="st in students" :key="st.id">
+        <p>Name: {{ st.name }}</p>
+        <p>Age: {{ st.age }}</p>
+      </li>
     </ul>
   </div>
 </template>
 
 <script lang="js">
-export default {
-  directives:{
-    styleLinks(el, order){
-      el.childNodes.forEach(child => {
-        child.style.fontSize = order.value + "px";
-      })
-    }
-  },
-  data() {
-    return {
+import stMixin from "@/mixins/stMixin";
 
-    };
-  },
-  methods: {},
+export default {
+  mixins: [stMixin],
 };
 </script>
 <style lang="scss" scoped>
@@ -40,17 +29,10 @@ export default {
 
   ul {
     list-style-type: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
   }
-
   li {
     display: flex;
     border-right: 1px;
-    justify-content: space-between;
     width: 100%;
   }
 }
