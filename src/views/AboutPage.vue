@@ -9,8 +9,11 @@
 export default {
   methods: {
     routeFunction() {
-      this.$router.go(-3);
+      this.$router.replace({ name: "Home" });
     },
+  },
+  mounted() {
+    console.log(this.$router.hasRoute("Profile"));
   },
 };
 </script>
