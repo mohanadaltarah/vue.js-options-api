@@ -5,7 +5,10 @@
     </div>
     <div class="links">
       <ul>
-        <li v-for="link in links" :key="link">{{ link }}</li>
+        <li>
+          <router-link to="/">Home</router-link>
+        </li>
+        <li><router-link to="/about">About</router-link></li>
       </ul>
     </div>
     <div class="btns">
@@ -20,7 +23,6 @@ export default {
   data() {
     return {
       logo: "My Logo",
-      links: ["link1", "link2", "link3", "link4"],
     };
   },
 };
