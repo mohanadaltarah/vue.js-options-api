@@ -1,11 +1,15 @@
 <template>
   <div class="main-page">
     <h2>This is my main page</h2>
+    <button @click="$router.push({ name: 'About' })">Click me</button>
   </div>
 </template>
 
 <script lang="js">
 export default {
+  mounted(){
+    console.log(this.$router)
+  }
 };
 </script>
 <style lang="scss" scoped>

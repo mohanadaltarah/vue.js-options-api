@@ -5,10 +5,11 @@
     </div>
     <div class="links">
       <ul>
-        <li>
-          <router-link to="/">Home</router-link>
+        <li v-for="route in myRoutes" :key="route.name">
+          <router-link :to="{ name: route.name }">{{
+            route.meta.title
+          }}</router-link>
         </li>
-        <li><router-link to="/about">About</router-link></li>
       </ul>
     </div>
     <div class="btns">
@@ -23,7 +24,11 @@ export default {
   data() {
     return {
       logo: "My Logo",
+      myRoutes: [],
     };
+  },
+  mounted() {
+    this.myRoutes = this.$router.options.routes;
   },
 };
 </script>
