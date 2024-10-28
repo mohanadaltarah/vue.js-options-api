@@ -1,7 +1,7 @@
 <template>
   <div class="main-page">
     <h2>This is my main page</h2>
-    <button @click="$router.push({ name: 'About' })">Click me</button>
+    <button @click="routeFunction">Click me</button>
   </div>
 </template>
 
@@ -9,6 +9,11 @@
 export default {
   mounted(){
     console.log(this.$router)
+  },
+  methods:{
+    routeFunction(){
+      this.$router.go(-1)
+    }
   }
 };
 </script>
