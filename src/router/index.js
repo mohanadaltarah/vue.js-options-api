@@ -4,6 +4,7 @@ import AboutPage from "@/views/AboutPage.vue";
 import ProfilePage from "@/views/ProfilePage.vue";
 import SiteWishlist from "@/views/SiteWishlist.vue";
 import SiteCourses from "@/views/SiteCourses.vue";
+import NotFound from "@/views/NotFound.vue";
 
 const routes = [
   {
@@ -42,6 +43,11 @@ const routes = [
         component: SiteWishlist,
       },
     ],
+  },
+  {
+    name: "not-found",
+    path: "/:pathMatch(.*)*",
+    component: NotFound,
   },
 ];
 
