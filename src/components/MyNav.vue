@@ -11,6 +11,7 @@
             :to="{
               name: route.name,
               params: { id: 10, username: 'Mohanad Altarah' },
+              query: { age: 20, gender: 'Male', grade: 'One' },
             }"
             >{{ route.meta.title }}</router-link
           >
