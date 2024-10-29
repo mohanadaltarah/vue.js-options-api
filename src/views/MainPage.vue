@@ -12,7 +12,10 @@ export default {
   },
   methods:{
     routeFunction(){
-      this.$router.go(-1)
+      console.log(this.$route);
+      if(this.$router.hasRoute(this.$route.name)){
+        console.log("The website identifies this route successfully!")
+      }
     }
   }
 };

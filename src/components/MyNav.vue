@@ -6,9 +6,17 @@
     <div class="links">
       <ul>
         <li v-for="route in myRoutes" :key="route.name">
-          <router-link :to="{ name: route.name }">{{
-            route.meta.title
-          }}</router-link>
+          <router-link
+            v-if="route.name === 'Profile'"
+            :to="{
+              name: route.name,
+              params: { id: 10, username: 'Mohanad Altarah' },
+            }"
+            >{{ route.meta.title }}</router-link
+          >
+          <router-link v-else :to="{ name: route.name }"
+            >{{ route.meta.title }}
+          </router-link>
         </li>
       </ul>
     </div>
