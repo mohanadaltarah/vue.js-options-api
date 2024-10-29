@@ -23,7 +23,7 @@ const routes = [
   },
   {
     name: "Profile",
-    path: "/profile/:id/:username",
+    path: "/profile/:id/:name",
     component: ProfilePage,
     meta: {
       title: "Profile",

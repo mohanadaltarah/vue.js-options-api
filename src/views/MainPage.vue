@@ -1,14 +1,33 @@
 <template>
   <div class="main-page">
     <h2>This is my main page</h2>
-    <button @click="routeFunction">Click me</button>
+    <button @click="getStudents">Click me</button>
+    <ul>
+      <li v-for="st in students" :key="st.id">
+        <p>Id: {{ st.id }}</p>
+        <p>Name: {{ st.name }}</p>
+        <p>Age: {{ st.age }}</p>
+        <p>Gender: {{ st.gender }}</p>
+        <p>Grade: {{ st.grade }}</p>
+        <button
+          @click="
+            toProfile('Profile', st.name, st.id, st.age, st.grade, st.gender)
+          "
+        >
+          View Profile
+        </button>
+        <hr />
+      </li>
+    </ul>
   </div>
 </template>
 
 <script lang="js">
 export default {
-  mounted(){
-    console.log(this.$router)
+  data(){
+    return{
+      students: [],
+    }
   },
   methods:{
     routeFunction(){
@@ -16,9 +35,19 @@ export default {
       if(this.$router.hasRoute(this.$route.name)){
         console.log("The website identifies this route successfully!")
       }
-    }
+    },
+    async getStudents(){
+      await fetch("https://course-backend.onrender.com/")
+          .then(res => res.json())
+          .then(data => this.students = data)
+    },
+    toProfile(view, name, id, age, gender, grade){
+      this.$router.push({name: view, params:{id, name },
+        query:{age, gender, grade}
+    })
   }
-};
+}
+}
 </script>
 <style lang="scss" scoped>
 .main-page {
@@ -32,11 +61,6 @@ export default {
 
   ul {
     list-style-type: none;
-  }
-  li {
-    display: flex;
-    border-right: 1px;
-    width: 100%;
   }
 }
 </style>
