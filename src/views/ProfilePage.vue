@@ -4,9 +4,14 @@
     <h3>{{ $route.params.id }}</h3>
     <h3>{{ $route.params.name }}</h3>
     <hr />
-    <h3>{{ $route.query.age }}</h3>
-    <h3>{{ $route.query.gender }}</h3>
-    <h3>{{ $route.query.grade }}</h3>
+    <div class="links">
+      <router-link :to="{ name: 'courses' }">MyCourses</router-link>
+      <router-link :to="{ name: 'wishlist' }">MyWishlist</router-link>
+    </div>
+    <hr />
+    <div class="container">
+      <router-view />
+    </div>
     <button @click="$router.go(-1)">Go back</button>
   </div>
 </template>
@@ -18,4 +23,10 @@ export default {
   },
 };
 </script>
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+</style>

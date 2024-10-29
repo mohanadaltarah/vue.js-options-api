@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from "vue-router";
 import MainPage from "@/views/MainPage.vue";
 import AboutPage from "@/views/AboutPage.vue";
 import ProfilePage from "@/views/ProfilePage.vue";
+import SiteWishlist from "@/views/SiteWishlist.vue";
+import SiteCourses from "@/views/SiteCourses.vue";
 
 const routes = [
   {
@@ -28,6 +30,18 @@ const routes = [
     meta: {
       title: "Profile",
     },
+    children: [
+      {
+        name: "courses",
+        path: "courses",
+        component: SiteCourses,
+      },
+      {
+        name: "wishlist",
+        path: "wishlist",
+        component: SiteWishlist,
+      },
+    ],
   },
 ];
 
