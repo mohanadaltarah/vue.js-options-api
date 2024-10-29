@@ -1,32 +1,46 @@
 <template>
   <div class="main-page">
     <h2>This is my main page</h2>
-    <button @click="getStudents">Click me</button>
-    <ul>
-      <li v-for="st in students" :key="st.id">
-        <p>Id: {{ st.id }}</p>
-        <p>Name: {{ st.name }}</p>
-        <p>Age: {{ st.age }}</p>
-        <p>Gender: {{ st.gender }}</p>
-        <p>Grade: {{ st.grade }}</p>
-        <button
-          @click="
-            toProfile('Profile', st.name, st.id, st.age, st.grade, st.gender)
-          "
-        >
-          View Profile
-        </button>
-        <hr />
-      </li>
-    </ul>
+    <!--    <button @click="getStudents">Click me</button>-->
+    <!--    <ul>-->
+    <!--      <li v-for="st in students" :key="st.id">-->
+    <!--        <p>Id: {{ st.id }}</p>-->
+    <!--        <p>Name: {{ st.name }}</p>-->
+    <!--        <p>Age: {{ st.age }}</p>-->
+    <!--        <p>Gender: {{ st.gender }}</p>-->
+    <!--        <p>Grade: {{ st.grade }}</p>-->
+    <!--        <button-->
+    <!--          @click="-->
+    <!--            toProfile('Profile', st.name, st.id, st.age, st.grade, st.gender)-->
+    <!--          "-->
+    <!--        >-->
+    <!--          View Profile-->
+    <!--        </button>-->
+    <!--        <hr />-->
+    <!--      </li>-->
+    <!--    </ul>-->
+    <ProvideInject />
   </div>
 </template>
 
 <script lang="js">
+import ProvideInject from "@/components/ProvideInject.vue";
 export default {
   data(){
     return{
       students: [],
+      email: "mohanad@example.com",
+      age: 24
+    }
+  },
+  components:{
+    ProvideInject,
+  },
+  provide(){
+    return{
+      name: "Mohanad Altarah",
+      email: this.email,
+      age: this.age
     }
   },
   methods:{

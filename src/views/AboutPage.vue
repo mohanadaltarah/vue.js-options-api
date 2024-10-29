@@ -33,7 +33,7 @@ export default {
   watch: {
     "userData.name"(newValue, oldValue) {
       console.log("new value: ", newValue);
-      console.log("old val: ", oldValue);
+      console.log("old value: ", oldValue);
     },
     myArray: {
       handler(newValue) {
