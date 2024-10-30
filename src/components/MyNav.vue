@@ -1,7 +1,7 @@
 <template>
   <nav class="my-nav">
     <div class="logo">
-      <img src="@/assets/logo.png" alt="" />
+      <img @click="emitEvent" src="@/assets/logo.png" alt="" />
     </div>
     <div class="links">
       <ul>
@@ -30,6 +30,12 @@ export default {
       logo: "My Logo",
       myRoutes: [],
     };
+  },
+  inject: ["emitter"],
+  methods: {
+    emitEvent() {
+      this.emitter.emit("globalEvent", 50);
+    },
   },
   mounted() {
     this.myRoutes = this.$router.options.routes;
